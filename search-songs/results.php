@@ -22,14 +22,26 @@ $sql = "
   ORDER BY title ASC
 ";
 
-echo $sql;
-
 $statement = $pdo->prepare($sql);
 
 $like = '%'.$dvd_title.'%';
 $statement->bindParam(1, $like);
 $statement->execute();
 $dvds = $statement->fetchAll(PDO::FETCH_OBJ);
+
+//conditional welcome statement for # dvds
+$num_dvds = $statement->rowCount();
+if($num_dvds==0) {
+	echo "We're sorry. There are no DVDs to match your query. Please <a href='search.php'>search</a> again.";
+	exit();
+}
+
+if($num_dvds==1) {
+	echo "We found $num_dvds dvd that matched your search for '$dvd_title':\n";	
+}
+else {
+	echo "We found $num_dvds dvds that matched your search for '$dvd_title':\n";
+}
 
 ?>
 
