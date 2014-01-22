@@ -7,20 +7,24 @@ $pass = 'ttrojan';
 
 $pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
 
-$artist_name = $_GET['artist'];
+$dvd_title = $_GET['title'];
 
 $sql = "
-  SELECT title, price, play_count, artist_name
-  FROM songs
-  INNER JOIN artists
-  ON songs.artist_id = artists.id
-  WHERE artist_name LIKE ?
-  ORDER BY play_count DESC
+  SELECT title, rating, genre, format
+  FROM dvd_titles
+  INNER JOIN ratings
+  ON dvd_titles.rating_id = ratings.id
+  INNER JOIN genres
+  ON dvd_titles.genre_id = genres.id
+  INNER JOIN formats
+  ON dvd_titles.format_id = formats.id
+  WHERE title LIKE ?
+  ORDER BY title ASC
 ";
 
 $statement = $pdo->prepare($sql);
 
-$like = '%'.$artist_name.'%';
+$like = '%'.$dvd_title.'%';
 $statement->bindParam(1, $like);
 $statement->execute();
 $songs = $statement->fetchAll(PDO::FETCH_OBJ);
@@ -30,7 +34,7 @@ $songs = $statement->fetchAll(PDO::FETCH_OBJ);
 <?php foreach ($songs as $song) : ?>
   <div class="song">
     <h3>
-      <?php echo $song->title; ?> by <?php echo $song->artist_name; ?>
+      <?php echo $song->title; ?> by <?php echo $song->dvd_title; ?>
     </h3>
     <p>Play Count: <?php echo $song->play_count; ?></p>
     <p>Price: $<?php echo $song->price; ?></p>
