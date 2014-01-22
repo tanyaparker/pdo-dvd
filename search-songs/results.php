@@ -1,7 +1,7 @@
 <?php
 
 $host = 'itp460.usc.edu';
-$dbname = 'music';
+$dbname = 'dvd';
 $user = 'student';
 $pass = 'ttrojan';
 
@@ -22,6 +22,8 @@ $sql = "
   ORDER BY title ASC
 ";
 
+echo $sql;
+
 $statement = $pdo->prepare($sql);
 
 $like = '%'.$dvd_title.'%';
@@ -34,10 +36,10 @@ $dvds = $statement->fetchAll(PDO::FETCH_OBJ);
 <?php foreach ($dvds as $dvd) : ?>
   <div class="dvd">
     <h3>
-      <?php echo $dvd->title; ?> by <?php echo $dvd->title; ?>
+      <?php echo $dvd->title; ?>
     </h3>
     <p>Rating: <?php echo $dvd->rating; ?></p>
-    <p>Genre: $<?php echo $dvd->genre; ?></p>
-    <p>Format: $<?php echo $dvd->format; ?></p>
+    <p>Genre: <?php echo $dvd->genre; ?></p>
+    <p>Format: <?php echo $dvd->format; ?></p>
   </div>
 <?php endforeach; ?>
