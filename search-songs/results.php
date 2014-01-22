@@ -27,16 +27,17 @@ $statement = $pdo->prepare($sql);
 $like = '%'.$dvd_title.'%';
 $statement->bindParam(1, $like);
 $statement->execute();
-$songs = $statement->fetchAll(PDO::FETCH_OBJ);
+$dvds = $statement->fetchAll(PDO::FETCH_OBJ);
 
 ?>
 
-<?php foreach ($songs as $song) : ?>
-  <div class="song">
+<?php foreach ($dvds as $dvd) : ?>
+  <div class="dvd">
     <h3>
-      <?php echo $song->title; ?> by <?php echo $song->dvd_title; ?>
+      <?php echo $dvd->title; ?> by <?php echo $dvd->title; ?>
     </h3>
-    <p>Play Count: <?php echo $song->play_count; ?></p>
-    <p>Price: $<?php echo $song->price; ?></p>
+    <p>Rating: <?php echo $dvd->rating; ?></p>
+    <p>Genre: $<?php echo $dvd->genre; ?></p>
+    <p>Format: $<?php echo $dvd->format; ?></p>
   </div>
 <?php endforeach; ?>
