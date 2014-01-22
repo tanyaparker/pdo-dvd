@@ -1,4 +1,4 @@
 <form method="get" action="results.php">
-	Artist: <input type="text" name="artist">
-	<input type="submit" value="Search">
+    DVD Title: <input type="text" name="title">
+    <input type="submit" value="Search">
 </form>
