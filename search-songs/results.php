@@ -2,11 +2,11 @@
 
 .gradientBox{ 
 height: 200px;
-width: 800px; 
+width: 400px; 
 padding: 20px;
 background-color: white; 
 
-/* outer shadows  (note the rgba is red, green, blue, alpha) */
+/* outer shadows */
 -webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4); 
 -moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
 
@@ -17,8 +17,8 @@ border-radius: 7px;
 
 /* gradients */
 background: -webkit-gradient(linear, left top, left bottom, 
-color-stop(0%, white), color-stop(15%, white), color-stop(100%, #D7E9F5)); 
-background: -moz-linear-gradient(top, white 0%, white 55%, #D5E4F3 130%); 
+color-stop(0%, white), color-stop(15%, white), color-stop(100%, #d5d5f3)); 
+background: -moz-linear-gradient(top, white 0%, white 55%, #d5d5f3 130%); 
 }
 
 </style>
@@ -73,10 +73,14 @@ else {
 <?php foreach ($dvds as $dvd) : ?>
   <div class="gradientBox">
     <h3>
-      <?php echo $dvd->title; ?>
+      <font face="verdana">
+        <?php echo $dvd->title; ?>
+      </font>
     </h3>
-    <p>Rating: <?php echo $dvd->rating; ?></p>
-    <p>Genre: <?php echo $dvd->genre; ?></p>
-    <p>Format: <?php echo $dvd->format; ?></p>
+    <table>
+    	<tr><td><b>Rating:</b></td><td><?php echo $dvd->rating; ?></td></tr>
+    	<tr><td><b>Genre:</b></td><td><?php echo $dvd->genre; ?></td></tr>
+    	<tr><td><b>Format:</b></td><td><?php echo $dvd->format; ?></td></tr>
+	</table>
   </div>
 <?php endforeach; ?>
