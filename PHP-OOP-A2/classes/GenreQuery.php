@@ -1,5 +1,7 @@
 <?php
 
+require_once('db.php');
+
 class GenreQuery {
   protected $pdo;
   protected $sql;
@@ -23,15 +25,5 @@ class GenreQuery {
   }
 
 }
-
-$host = 'itp460.usc.edu';
-$dbname = 'music';
-$user = 'student';
-$pass = 'ttrojan';
-$pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
-
-$genreQuery = new GenreQuery($pdo);
-$genreQuery->orderByGenre();
-$genres = $genreQuery->getAll();
 
 ?>

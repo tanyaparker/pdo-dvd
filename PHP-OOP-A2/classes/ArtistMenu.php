@@ -13,10 +13,10 @@ class ArtistMenu
 	        $id = $artists[$x]["id"];
 	    	$artist_name = $artists[$x]["artist_name"];
 	    	
-	    	$select = $select . '<option value='.$id.'>'.$artist_name.'</option>';
+	    	$select .= '<option value='.$id.'>'.$artist_name.'</option>';
 		}
 
-		$select = $select . '</select>';
+		$select .= '</select>';
 
 		$this->select_artist = $select;
     }
