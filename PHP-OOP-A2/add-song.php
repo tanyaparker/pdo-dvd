@@ -1,5 +1,5 @@
 <?php
-require_once 'db.php';
+require_once 'classes/db.php';
 require_once 'classes/ArtistQuery.php';
 require_once 'classes/GenreQuery.php';
 require_once 'classes/ArtistMenu.php';

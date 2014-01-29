@@ -1,6 +1,6 @@
 <?php
 
-require_once 'db.php';
+require_once 'classes/db.php';
 require('classes/Song.php');
 
 $song = new Song($pdo);
@@ -19,3 +19,5 @@ $response = $song->save();
 <?php else : ?>
     <p>There was an error adding your song.</p>
 <?php endif ?>
+
+Try adding another song by <a href="add-song.php">clicking here</a>!

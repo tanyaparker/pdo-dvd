@@ -20,7 +20,11 @@ class Song {
   }
 
 	public function save() {
+    $this->sql = "INSERT INTO songs (title, artist_id, genre_id, price)
+                  VALUES ('$this->title', $this->artist_id, $this->genre_id, $this->price)";
 
+    $statement = $this->pdo->prepare($this->sql);
+    return $statement->execute();
 	}
 
 	public function setTitle($title) {
@@ -44,15 +48,9 @@ class Song {
 	}
 
 	public function getId() {
+    $this->song_id = $this->pdo->lastInsertId();
     return $this->song_id;
 	}
 }
 
 ?>
-
-$song = new Song($pdo);
-$song->setTitle('Come Away With Me');
-$song->setArtistId(2);
-$song->setGenreId(3);
-$song->setPrice('1.69');
-$response = $song->save();
