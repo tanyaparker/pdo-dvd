@@ -6,30 +6,35 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Session\Session;
 
+use Carbon\Carbon;
+use ITP\Auth;
+
 $session = new Session();
 $session->start();
-
-if($session->get('username'))
-	echo "yes";
-else
-	echo "no";
 
 $request = Request::createFromGlobals();
 $username = $request->request->get('username');
 $password = $request->request->get('password');
 
-$session->set('username', $username);
-$session->set('password', $password);
-$session->set('loginTime', time());
+$auth = new Auth($pdo);
+$login = $auth->attempt($username, $password);
 
-echo $session->get('username');
-echo '<br />';
-echo $session->get('loginTime');
+if ($login) {
+	$session->set('username', $username);	
+	$session->set('password', $password);
+	$session->set('loginTime', time());
 
-//echo $session->getFlashBag()->set('statusMessage', 'Thanks!');
+	$session->getFlashBag()->add('success', 'You have successfully logged in!');
 
-//var_dump($session->getFlashBag()->get('statusMessage'));
+	$response = new RedirectResponse('dashboard.php');
+	$response->send();
+}
+else {
+	$session->getFlashBag()->add('error', 'Incorrect Credentials');
 
+	$response = new RedirectResponse('login.php');
+	$response->send();
+}
 ?>
 
 <!DOCTYPE html>
@@ -39,6 +44,7 @@ echo $session->get('loginTime');
 </head>
 
 <body>
+	TODO: session set email, convert time
 </body>
 
 </html>
