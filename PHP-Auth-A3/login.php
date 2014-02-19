@@ -20,7 +20,7 @@ include 'form.css';
     <div>
         <tr>
             <td><font face="Helvetica"><b>Password:</b></font></td>
-            <td><input type="text" name="password" /></td> 
+            <td><input type="password" name="password" /></td> 
         </tr>
     </div>
     <div>

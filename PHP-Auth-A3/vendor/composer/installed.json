@@ -48,36 +48,39 @@
         ]
     },
     {
-        "name": "symfony/finder",
-        "version": "v2.3.10",
-        "version_normalized": "2.3.10.0",
-        "target-dir": "Symfony/Component/Finder",
+        "name": "symfony/http-foundation",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "target-dir": "Symfony/Component/HttpFoundation",
         "source": {
             "type": "git",
-            "url": "https://github.com/symfony/Finder.git",
-            "reference": "c39a28f2e6bcea817dd696993d528b67917f324e"
+            "url": "https://github.com/symfony/HttpFoundation.git",
+            "reference": "0fa4996401cf4e97e621357b6f6a9efa8eee678e"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/Finder/zipball/c39a28f2e6bcea817dd696993d528b67917f324e",
-            "reference": "c39a28f2e6bcea817dd696993d528b67917f324e",
+            "url": "https://api.github.com/repos/symfony/HttpFoundation/zipball/0fa4996401cf4e97e621357b6f6a9efa8eee678e",
+            "reference": "0fa4996401cf4e97e621357b6f6a9efa8eee678e",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.3"
         },
-        "time": "2014-01-07 13:19:25",
+        "time": "2014-02-18 15:41:30",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "2.3-dev"
+                "dev-master": "2.5-dev"
             }
         },
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-0": {
-                "Symfony\\Component\\Finder\\": ""
-            }
+                "Symfony\\Component\\HttpFoundation\\": ""
+            },
+            "classmap": [
+                "Symfony/Component/HttpFoundation/Resources/stubs"
+            ]
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
@@ -95,7 +98,7 @@
                 "homepage": "http://symfony.com/contributors"
             }
         ],
-        "description": "Symfony Finder Component",
+        "description": "Symfony HttpFoundation Component",
         "homepage": "http://symfony.com"
     }
 ]
