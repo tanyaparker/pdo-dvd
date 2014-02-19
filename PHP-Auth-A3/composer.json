@@ -1,0 +1,6 @@
+{
+    "require": {
+        "nesbot/Carbon": "*",
+        "symfony/finder": "2.3.*"
+    }
+}
