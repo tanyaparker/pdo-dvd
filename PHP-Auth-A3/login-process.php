@@ -44,7 +44,6 @@ else {
 </head>
 
 <body>
-	TODO: session set email, convert time
 </body>
 
 </html>
