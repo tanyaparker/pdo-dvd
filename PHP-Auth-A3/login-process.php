@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 use Carbon\Carbon;
-use ITP\Auth;
+use ITP\Auth as Auth;
 
 $session = new Session();
 $session->start();

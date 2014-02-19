@@ -1,5 +1,16 @@
 <?php
-include 'form.css'; 
+require __DIR__ . '/vendor/autoload.php';
+
+use Symfony\Component\HttpFoundation\Session\Session;
+
+$session = new Session();
+$session->start();
+
+include 'form.css';
+
+foreach ($session->getFlashBag()->get('error', array()) as $message) {
+    echo '<div class="flash-error">'.$message.'</div>';
+}
 ?>
 
 <!DOCTYPE html>
