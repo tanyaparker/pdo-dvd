@@ -61,7 +61,7 @@ else {
 	foreach ($songs as $song) :
 		echo "<tr>
 				<td>$song->title</td>
-				<td>$song->artist</td>
+				<td>$song->artist_name</td>
 				<td>$song->genre</td>
 				<td>$song->price</td>
 			  </tr>"
