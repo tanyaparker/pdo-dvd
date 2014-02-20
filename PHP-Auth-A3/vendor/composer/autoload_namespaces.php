@@ -7,5 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Symfony\\Component\\HttpFoundation\\' => array($vendorDir . '/symfony/http-foundation'),
+    'ITP' => array($baseDir . '/'),
     'Carbon' => array($vendorDir . '/nesbot/carbon/src'),
 );
