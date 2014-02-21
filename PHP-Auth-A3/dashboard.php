@@ -39,9 +39,9 @@ else {
 
 <body>
 <?php 
-	echo $session->get('username'); 
-	echo $session->get('email'); 
-	echo $session->get('timestamp'); 
+	echo "Username: " . $session->get('username') . "<br />";
+	echo "Email: " . $session->get('email') . "<br />";
+	echo "Login Time: " . $session->get('timestamp') . "<br />";
 	echo "<a href='logout.php'>Log Out</a>";
 
 	$songQuery = new SongQuery($pdo);
@@ -64,7 +64,7 @@ else {
 				<td>$song->artist_name</td>
 				<td>$song->genre</td>
 				<td>$song->price</td>
-			  </tr>"
+			  </tr>";
 	endforeach;
 
 	echo "</table>";

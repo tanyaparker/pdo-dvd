@@ -28,7 +28,7 @@ class SongQuery {
   public function orderBy($title)
   {
     $this->sql .= " ORDER BY $title";
-    return this;
+    return $this;
   }
 
   public function all()

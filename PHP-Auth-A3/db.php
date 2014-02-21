@@ -1,7 +1,7 @@
 <?php
 
 $host = 'itp460.usc.edu';
-$dbname = 'dvd';
+$dbname = 'music';
 $user = 'student';
 $pass = 'ttrojan';
 
