@@ -35,7 +35,7 @@ else {
 
 <body>
 
-	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="navbar navbar-inverse" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -53,7 +53,7 @@ else {
     </div>
 
     <div class="container">
-    	<table align="right" style="margin-top: 60px;">
+    	<table align="right">
        	  <tr>
        	  	<td><b>Username:</b></td>
        	  	<td><?php echo $session->get('username'); ?></td>

@@ -18,7 +18,9 @@ $password = $request->request->get('password');
 $auth = new Auth($pdo);
 $login = $auth->attempt($username, $password);
 
-if ($login) {
+$loggedIn = $session->get('username');
+
+if ($login) { //if logging in for first time
 	$session->set('username', $username);
 	$session->set('email', $auth->getEmail());
 	$session->set('loginTime', time());
@@ -28,7 +30,13 @@ if ($login) {
 	$response = new RedirectResponse('dashboard.php');
 	$response->send();
 }
-else {
+else if (!empty($loggedIn)) { //else if already logged in
+	$session->getFlashBag()->add('success', 'You have successfully logged in!');
+	
+	$response = new RedirectResponse('dashboard.php');
+	$response->send();
+}
+else { //else if not logged in at all
 	$session->getFlashBag()->add('error', 'Incorrect Credentials');
 	
 	$response = new RedirectResponse('login.php');
