@@ -17,30 +17,44 @@ foreach ($session->getFlashBag()->get('error', array()) as $message) {
 <html>
 <head>
     <title>Log In</title>
+
+    <link href="../css/bootstrap.css" rel="stylesheet">
 </head>
 
 <body>
-<table>
-<form method="post" action="login-process.php">
-    <div>
-        <tr>
-            <td><font face="Helvetica"><b>Username:</b></font></td>
-            <td><input type="text" name="username" /></td>
-        </tr>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="dashboard.php">ITP 499 Authentication</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right" role="form" method="post" action="login-process.php">
+            <div class="form-group">
+              <input type="text" name="username" placeholder="Username" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" name="password" placeholder="Password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Log in</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
     </div>
-    <div>
-        <tr>
-            <td><font face="Helvetica"><b>Password:</b></font></td>
-            <td><input type="password" name="password" /></td> 
-        </tr>
+
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Welcome!</h1>
+        <p>Please log in to see your dashboard of songs.</p>
+      </div>
     </div>
-    <div>
-        <tr>
-            <td></td><td><input type="submit" value="Log In" /></td>
-        </tr>
-    </div>
-</form>
-</table>
+
 </body>
 </html>
 

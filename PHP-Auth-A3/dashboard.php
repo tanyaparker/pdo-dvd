@@ -29,41 +29,87 @@ else {
 <html>
 <head>
 	<title>Dashboard</title>
+
+	<link href="../css/bootstrap.css" rel="stylesheet">
 </head>
 
 <body>
-<?php 
-	echo "Username: " . $session->get('username') . "<br />";
-	echo "Email: " . $session->get('email') . "<br />";
-	echo "Login Time: " . Carbon::createFromTimeStamp($session->get('loginTime'))->diffForHumans() . "<br />";
-	echo "<a href='logout.php'>Log Out</a>";
 
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="dashboard.php">ITP 499 Authentication</a>
+        </div>
+        <div class="navbar-header navbar-right">
+          <a href="logout.php" role="button" class="btn btn-info">Log Out</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+    	<table align="right" style="margin-top: 60px;">
+       	  <tr>
+       	  	<td><b>Username:</b></td>
+       	  	<td><?php echo $session->get('username'); ?></td>
+       	  </tr>
+       	  <tr>
+       	  	<td><b>Email:</b></td>
+       	  	<td><?php echo $session->get('email'); ?></td>
+       	  </tr>
+       	  <tr>
+       	  	<td><b>Last Login:</b></td>
+       	  	<td><?php echo Carbon::createFromTimeStamp($session->get('loginTime'))->diffForHumans(); ?></td>
+       	  </tr>
+       	</table>	
+    </div>
+
+<?php 
 	$songQuery = new SongQuery($pdo);
 	$songs = $songQuery
 				->withArtist()
 				->withGenre()
 				->orderBy('title')
 				->all();
-	echo "<table>
-			<tr>
-				<td>Title</td>
-				<td>Artist</td>
-				<td>Genre</td>
-				<td>Price</td>
-			</tr>";
-
-	foreach ($songs as $song) :
-		echo "<tr>
-				<td>$song->title</td>
-				<td>$song->artist_name</td>
-				<td>$song->genre</td>
-				<td>$song->price</td>
-			  </tr>";
-	endforeach;
-
-	echo "</table>";
 ?>
+<div class="container" style="margin-top: 50px;">
+	<div class="row" style="font-size: 30px;">
+		<div class="col-md-3">
+			<b>Title</b>
+		</div>
+		<div class="col-md-3">
+			<b>Artist</b>
+		</div>
+		<div class="col-md-3">
+			<b>Genre</b>
+		</div>
+		<div class="col-md-3">
+			<b>Price</b>
+		</div>
+	</div>
 
+<?php foreach ($songs as $song) : ?>
+	<div class='row'>
+		<div class='col-md-3'>
+			<?php echo $song->title ?>
+		</div>
+		<div class='col-md-3'>
+			<?php echo $song->artist_name ?>
+		</div>
+		<div class='col-md-3'>
+			<?php echo $song->genre ?>
+		</div>
+		<div class='col-md-3'>
+			<?php echo $song->price ?>
+		</div>
+	</div>
+<?php endforeach; ?>
+</div>
 
 </body>
 

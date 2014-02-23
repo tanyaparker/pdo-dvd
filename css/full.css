@@ -1,0 +1,44 @@
+body {
+	margin-top: 50px; /* 50px is the height of the navbar - change this if the navbarn height changes */
+}
+
+.full_escher {
+    display: table;
+    width: 100%;
+    height: auto;
+    padding: 400px 0;
+    text-align: center;
+    color: #fff;
+    background: url(../img/mc_escher.jpg) no-repeat center center scroll;
+    background-color: #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.full_error {
+    display: table;
+    width: 100%;
+    height: auto;
+    padding: 50px 0;
+    text-align: left;
+    color: #fff;
+    background: url(../img/gradient_pink.png) no-repeat center center scroll;
+    background-color: #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.full_bg {
+  background-color: #eaf7fa;
+}
+
+.center {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 0 0 100px;
+}
