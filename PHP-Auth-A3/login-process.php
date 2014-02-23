@@ -19,17 +19,15 @@ $password = $request->request->get('password');
 $auth = new Auth($pdo);
 $login = $auth->attempt($username, $password);
 
-var_dump($login);
-
 if ($login) {
-	// $session->set('username', $username);
-	// $session->set('loginTime', time());
+	$session->set('username', $username);
+	//$session->set('email', $email);
+	$session->set('loginTime', time());
 
-	// $session->getFlashBag()->add('success', 'You have successfully logged in!');
+	$session->getFlashBag()->add('success', 'You have successfully logged in!');
 
 	$response = new RedirectResponse('dashboard.php');
 	$response->send();
-	echo "successful";
 }
 else {
 	$session->getFlashBag()->add('error', 'Incorrect Credentials');

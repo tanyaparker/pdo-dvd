@@ -12,22 +12,18 @@ use ITP\Auth;
 
 $session = new Session();
 $session->start();
+$username = $session->get('username');
 
-$request = Request::createFromGlobals();
-$username = $request->request->get('username');
-$password = $request->request->get('password');
+var_dump($username);
 
-$auth = new Auth($pdo);
-$login = $auth->attempt($username, $password);
-
-if ($login) {
-
-}
-else {
+if (empty($username)) {
 	$session->getFlashBag()->add('error', 'Incorrect Credentials');
 
 	$response = new RedirectResponse('login.php');
-	$response->send();
+	//$response->send();
+}
+else {
+	$session->getFlashBag()->add('success', 'You have successfully logged in!');
 }
 ?>
 
