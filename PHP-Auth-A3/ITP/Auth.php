@@ -35,6 +35,10 @@ class Auth {
     		return false;
     	}
 	}
+
+	public function getEmail() {
+		return $this->user_email;
+	}
 }
 
 ?>

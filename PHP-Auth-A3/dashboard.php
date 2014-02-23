@@ -14,13 +14,11 @@ $session = new Session();
 $session->start();
 $username = $session->get('username');
 
-var_dump($username);
-
 if (empty($username)) {
 	$session->getFlashBag()->add('error', 'Incorrect Credentials');
 
 	$response = new RedirectResponse('login.php');
-	//$response->send();
+	$response->send();
 }
 else {
 	$session->getFlashBag()->add('success', 'You have successfully logged in!');
@@ -37,7 +35,7 @@ else {
 <?php 
 	echo "Username: " . $session->get('username') . "<br />";
 	echo "Email: " . $session->get('email') . "<br />";
-	echo "Login Time: " . $session->get('timestamp') . "<br />";
+	echo "Login Time: " . Carbon::createFromTimeStamp($session->get('loginTime'))->diffForHumans() . "<br />";
 	echo "<a href='logout.php'>Log Out</a>";
 
 	$songQuery = new SongQuery($pdo);

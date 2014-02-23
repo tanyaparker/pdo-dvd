@@ -14,3 +14,13 @@ $response = new RedirectResponse('login.php');
 $response->send();
 
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logout</title>
+</head>
+<body>
+
+</body>
+</html>

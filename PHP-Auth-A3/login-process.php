@@ -21,17 +21,17 @@ $login = $auth->attempt($username, $password);
 
 if ($login) {
 	$session->set('username', $username);
-	//$session->set('email', $email);
+	$session->set('email', $auth->getEmail());
 	$session->set('loginTime', time());
 
 	$session->getFlashBag()->add('success', 'You have successfully logged in!');
-
+	
 	$response = new RedirectResponse('dashboard.php');
 	$response->send();
 }
 else {
 	$session->getFlashBag()->add('error', 'Incorrect Credentials');
-
+	
 	$response = new RedirectResponse('login.php');
 	$response->send();
 }
